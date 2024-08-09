@@ -36,9 +36,9 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: blagojanikoloski/bukvenakutija:latest
+          tags: blagojanikoloski/zborovnakutija:latest
           # Optional: additional tags
-          # tags: blagojanikoloski/bukvenakutija:latest, blagojanikoloski/bukvenakutija:${{ github.sha }}
+          # tags: blagojanikoloski/zborovnakutija:latest, blagojanikoloski/zborovnakutija:${{ github.sha }}
 
       - name: Logout from Docker Hub
         run: docker logout
