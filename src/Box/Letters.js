@@ -35,22 +35,22 @@ function Set(props) {
   switch (placement) {
     case 'top':
       xBase = 300;
-      yBase = 75;
+      yBase = 55;
       offsetMultiplier = (i) => xBase + (offset * (i - 1));
       break;
     case 'left':
-      xBase = 60;
+      xBase = 40;
       yBase = 320;
       offsetMultiplier = (i) => yBase + (offset * (i - 1));
       break;
     case 'right':
-      xBase = 540;
+      xBase = 560;
       yBase = 320;
       offsetMultiplier = (i) => yBase + (offset * (i - 1));
       break;
     case 'bottom':
       xBase = 300;
-      yBase = 565;
+      yBase = 585;
       offsetMultiplier = (i) => xBase + (offset * (i - 1));
       break;
     default:
