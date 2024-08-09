@@ -1,12 +1,13 @@
 import React from 'react';
 import { useGame } from '../context';
-import { fancyJoin, checkForWin, uuid } from '../utils';
+import { fancyJoin, checkForWin } from '../utils';
 import Modal from '../utils/Modal';
 import { createPortal } from 'react-dom';
 
 function WhiteSpan() {
-  return React.createElement('span', { className: 'join', key: uuid() }, ' - ');
+  return <span className="join"> - </span>;
 }
+
 
 function Guesses() {
   const [state] = useGame();
@@ -37,7 +38,7 @@ function Buttons(props) {
   const restartButton = React.createElement(
     'button',
     { onClick: () => keyDown({ key: 'Escape' }) },
-    'Од ново'
+    'Ново'
   );
 
   const submitButton = React.createElement(
