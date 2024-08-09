@@ -1,13 +1,165 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100svh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --background-color: #cccccc;
+  --past-color: #adadad;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100svh;
+  overflow: hidden;
+}
+
+path, circle, rect {
+  stroke-width: 5px;
+}
+
+text {
+  font-size: 60px;
+  text-anchor: middle;
+}
+
+p {
+  font-size: 24px;
+  text-align: center;
+}
+
+p.error {
+  font-size: 16px;
+}
+
+span.join {
+  color: var(--past-color);
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  max-height: 50svh;
+  justify-content: center;
+}
+
+svg {
+  margin: auto;
+}
+
+path, circle, rect {
+  stroke-width: 5px;
+  stroke: black;
+}
+
+.active {
+  stroke: var(--background-color);
+}
+
+path.active {
+  stroke-dasharray: 4% 4%;
+}
+
+path.past {
+  stroke: var(--past-color);
+}
+
+circle {
+  fill: white;
+}
+
+circle.past {
+  fill: var(--background-color);
+}
+
+circle.lead {
+  fill: black;
+  stroke: var(--background-color);
+}
+
+text {
+  font-size: 60px;
+  text-anchor: middle;
+  font-family: Arial, Helvetica, sans-serif;
+  fill: white;
+}
+
+text.past,text.active {
+  fill: black;
+}
+
+text.active {
+  font-weight: bold;
+}
+
+input {
+  background-color: var(--background-color);
+  border: none;
+  font-size: 60px;
+  outline: none;
+  width: 100%;
+  text-align: center;
+  padding: 0rem;
+  border-bottom: 2px solid black;
+}
+
+button {
+  font-size: 20px;
+  color: black;
+  -webkit-text-fill-color: black;
+  background-color: var(--background-color);
+  border: 2px solid black;
+  border-radius: 1em;
+  width: 7rem;
+  height: 2.2rem;
+  margin: 5px;
+}
+
+.banner {
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  transition: font-size 0.5s;
+}
+
+.loser {
+  font-size: 0rem;
+}
+
+.winner {
+  font-size: 3rem;
+  transition-timing-function: ease-out;
+}
+
+.modal {
+  display: flex;
+  position: absolute;
+  top: 0;
+  background-color: var(--past-color);
+  height: 100svh;
+  margin: 10px;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.modal p {
+  font-size: 16px;
+  text-align: left;
+  padding: 0rem 1rem;
+  margin: .5rem 1rem;
+}
+
+.modal button {
+  margin-left: 1rem;
+}
+
+.modal img {
+  margin-top: 20px;
+  margin-right: 7.5px;
 }
