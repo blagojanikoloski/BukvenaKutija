@@ -45,7 +45,7 @@ function generateMap(letterList) {
 
 const Game = createContext(baseGame);
 export const useGame = () => useContext(Game);
-const macedonianCyrillicRegex = /^[А-БВГДЃЕЖЗИЈКЛЉМНЊОПРСТЌУФХЦЧЏШа-бвгдѓежзиијклљмнњопрстќуфхцчџш\s]+$/;
+const macedonianCyrillicRegex = /^[А-БВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШа-бвгдѓежзѕијијклљмнњопрстќуфхцчџш\s]+$/;
 
 function checkForErrors(change, state) {
   if (change.intent === "guess") {
