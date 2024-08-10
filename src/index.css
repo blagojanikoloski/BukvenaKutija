@@ -139,6 +139,9 @@ button {
   color: #f5deb3;
 }
 
+.new-combination{
+  font-size: 2rem;
+}
 
 .modal {
   display: flex;
@@ -206,5 +209,9 @@ button {
 
   .banner {
     font-size: 2rem;
+  }
+  
+  .new-combination{
+    font-size: 1rem;
   }
 }

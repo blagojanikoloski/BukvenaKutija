@@ -24,6 +24,7 @@ function Guesses() {
       {state.won && (
         <div className="overlay">
           <div className="banner">🎉 Победивте! 🎉</div>
+          <div className="new-combination"> Утре нова комбинација! </div>
         </div>
       )}
     </div>
