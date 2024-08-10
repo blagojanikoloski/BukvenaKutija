@@ -1,26 +1,23 @@
 import React from 'react';
 
 export default function Modal({ closeModal }) {
-  return React.createElement(
-    'div',
-    { className: 'modal' },
-    React.createElement(
-      'div',
-      null,
-      React.createElement('p', null, '- Зборовите мора да бидат долги најмалку 3 букви'),
-      React.createElement('p', null, '- Зборовите се формираат со допирање на буквите по редослед'),
-      React.createElement('p', null, '- Последователните букви не можат да бидат од иста страна'),
-      React.createElement('p', null, '- Последната буква од зборот станува првата буква од следниот збор'),
-      React.createElement('p', null, '- Може да се користи иста буква повеќе пати!'),
-      React.createElement('p', null, '- Користете ги сите букви за да победите!'),
-      React.createElement(
-        'p',
-        null,
-        '- Играјте ја оригиналната игра ',
-        React.createElement('a', { href: 'https://www.nytimes.com/puzzles/letter-boxed' }, 'овде')
-      ),
-      React.createElement('button', { onClick: closeModal }, 'Затвори'),
-
-    )
+  return (
+    <div className="modal">
+      <div>
+        <p>- Зборовите мора да бидат долги најмалку 3 букви</p>
+        <p>- Зборовите се формираат со допирање на буквите по редослед</p>
+        <p>- Последователните букви не можат да бидат од иста страна</p>
+        <p>- Последната буква од зборот станува првата буква од следниот збор</p>
+        <p>- Може да се користи иста буква повеќе пати!</p>
+        <p>- Користете ги сите букви за да победите!</p>
+        <p>
+          - Играјте ја оригиналната игра{' '}
+          <a href="https://www.nytimes.com/puzzles/letter-boxed" target="_blank" rel="noopener noreferrer">
+            овде
+          </a>
+        </p>
+        <button onClick={closeModal}>Затвори</button>
+      </div>
+    </div>
   );
 }

@@ -31,8 +31,8 @@ export function fancyJoin(elements, joiner) {
   function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
   }
-  
-  const consonants = 'БВГДЃЖЗЅЈКЛЉМНЊПРСТЌФХЦЧЏШ';
+  // ЅЉЊЌ missing
+  const consonants = 'БВГДЃЖЗЈКЛМНПРСТФХЦЧЏШ';
   const vowels = 'АЕИОУ';
   const randomConsonants = shuffle(consonants.split(""));
   const randomVowels = shuffle(vowels.split(""));

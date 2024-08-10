@@ -4,27 +4,21 @@ import Box from './Box';
 import { GameProvider } from './context';
 
 function App() {
-  return React.createElement(
-    GameProvider,
-    null,
-    React.createElement('br'),
-    React.createElement('br'),
-    React.createElement(
-      'div',
-      { className: 'title-container' },
-      React.createElement('img', { src: './logo.png', alt: 'Logo', className: 'logo' }),
-      React.createElement('h1', null, 'Зборовна Кутија')
-    ),
-    React.createElement(
-      'div',
-      { className: 'row' },
-      React.createElement(Box, null)
-    ),
-    React.createElement(
-      'div',
-      { className: 'row' },
-      React.createElement(Input, null)
-    )
+  return (
+    <GameProvider>
+      <br />
+      <br />
+      <div className="title-container">
+        <img src="./logo.png" alt="Logo" className="logo" />
+        <h1>Зборовна Кутија</h1>
+      </div>
+      <div className="row">
+        <Box />
+      </div>
+      <div className="row">
+        <Input />
+      </div>
+    </GameProvider>
   );
 }
 

@@ -1,20 +1,16 @@
-import React from 'react';
-import { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { loadWords, letters } from './utils';
 
 const circleCoordinates = [
   [175, 100],
   [300, 100],
   [425, 100],
-
   [100, 175],
   [100, 300],
   [100, 425],
-
   [500, 175],
   [500, 300],
   [500, 425],
-
   [175, 500],
   [300, 500],
   [425, 500]
@@ -45,11 +41,12 @@ function generateMap(letterList) {
 
 const Game = createContext(baseGame);
 export const useGame = () => useContext(Game);
+
 const macedonianCyrillicRegex = /^[А-БВГДЃЕЖЗЅИЈКЛЉМНЊОПРСТЌУФХЦЧЏШа-бвгдѓежзѕијклљмнњопрстќуфхцчџш\s]+$/;
 
 function checkForErrors(change, state) {
   if (change.intent === "guess") {
-    if (!macedonianCyrillicRegex.test(change.currentGuess) && change.currentGuess !== "") { 
+    if (!macedonianCyrillicRegex.test(change.currentGuess) && change.currentGuess !== "") {
       return "Внесувајте само кирилични букви!";
     }
     const lastLetter = change.currentGuess.charAt(change.currentGuess.length - 1);
@@ -101,12 +98,11 @@ export function GameProvider({ children }) {
 
   const loadDictionary = async () => {
     const dictionary = await loadWords();
-
     setState({
       dictionary,
       loading: false
     });
-  }
+  };
 
   useEffect(() => {
     if (loading) {
@@ -115,10 +111,9 @@ export function GameProvider({ children }) {
   }, [loading]);
 
   return !loading ? (
-    React.createElement(Game.Provider, { value: [state, setState] }, children, 
-      state.__debug && (
-        React.createElement('pre', null, JSON.stringify(state, null, 2))
-      )
-    )
+    <Game.Provider value={[state, setState]}>
+      {children}
+      {state.__debug && <pre>{JSON.stringify(state, null, 2)}</pre>}
+    </Game.Provider>
   ) : "Се вчитува...";
 }

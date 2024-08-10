@@ -17,8 +17,7 @@ function deriveClass(letter, state) {
   return ""; // Ensure there is a default return value
 }
 
-function Circle(props) {
-  const { letter } = props;
+function Circle({ letter }) {
   const [state, setState] = useGame();
   const { letterMap, currentGuess } = state;
 
@@ -33,15 +32,14 @@ function Circle(props) {
     });
   }
 
-  return React.createElement(
-    'circle',
-    {
-      onClick: addLetter,
-      cx: x,
-      cy: y,
-      r: 12,
-      className: className
-    }
+  return (
+    <circle
+      onClick={addLetter}
+      cx={x}
+      cy={y}
+      r={12}
+      className={className}
+    />
   );
 }
 
@@ -49,11 +47,11 @@ export default function Circles() {
   const [state] = useGame();
   const { letters } = state;
 
-  return React.createElement(
-    'g',
-    null,
-    letters.flat().map((letter, i) => 
-      React.createElement(Circle, { letter: letter, key: i })
-    )
+  return (
+    <g>
+      {letters.flat().map((letter, i) => (
+        <Circle letter={letter} key={i} />
+      ))}
+    </g>
   );
 }

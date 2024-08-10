@@ -1,10 +1,7 @@
 import React from 'react';
 import { useGame } from '../context';
 
-function Path(props) {
-  const { word, current = false } = props;
-
-  // Ensure this is at the top level of your component
+function Path({ word, current = false }) {
   const [state] = useGame();
   const { letterMap } = state;
 
@@ -19,34 +16,29 @@ function Path(props) {
     paths.push(`M ${x1} ${y1} L ${x2} ${y2}`);
   }
 
-  return React.createElement(
-    'g',
-    null,
-    paths.map((d, i) =>
-      React.createElement('path', {
-        d: d,
-        className: current ? 'active' : 'past',
-        key: i
-      })
-    )
+  return (
+    <g>
+      {paths.map((d, i) => (
+        <path
+          d={d}
+          className={current ? 'active' : 'past'}
+          key={i}
+        />
+      ))}
+    </g>
   );
 }
 
 export default function Paths() {
-  // Ensure this is at the top level of your component
   const [state] = useGame();
   const { existingWords, currentGuess } = state;
 
-  const pastWords = existingWords.map((word, i) =>
-    React.createElement(Path, { word: word, key: i })
-  );
-
-  const currentWord = React.createElement(Path, { word: currentGuess, current: true });
-
-  return React.createElement(
-    'g',
-    null,
-    pastWords,
-    currentWord
+  return (
+    <g>
+      {existingWords.map((word, i) => (
+        <Path word={word} key={i} />
+      ))}
+      <Path word={currentGuess} current={true} />
+    </g>
   );
 }
