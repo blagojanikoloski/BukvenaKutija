@@ -14,7 +14,7 @@ export function fancyJoin(elements, joiner) {
 }
 
   export async function loadWords() {
-    const content = await fetch('https://raw.githubusercontent.com/whoeverest/macedonian-words/master/MK-dict.txt')
+    const content = await fetch('https://raw.githubusercontent.com/blagojanikoloski/ZborovnaKutija/master/src/utils/MK-dict.txt')
       .then(res => res.text());
   
     const words = content
