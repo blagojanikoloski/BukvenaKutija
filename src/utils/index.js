@@ -19,7 +19,7 @@ export function fancyJoin(elements, joiner) {
   
     const words = content
       .split('\n')
-      .filter(word => word.length > 3);
+      .filter(word => word.length >= 3);
   
     let dictionary = new Set();
     words.forEach(word => dictionary.add(word.trim().toUpperCase()));

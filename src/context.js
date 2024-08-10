@@ -73,7 +73,7 @@ function checkForErrors(change, state) {
   }
   if (change.intent === "submit") {
     if (state.currentGuess.length < 3) {
-      return "Збор мора да има повеќе од 3 букви!";
+      return "Збор мора да има 3 или повеќе букви!";
     }
     if (!state.dictionary.has(state.currentGuess) && !state.__debug) {
       return `${state.currentGuess} не е збор!`;
