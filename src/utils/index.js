@@ -1,14 +1,18 @@
+import React from 'react';
+
 export function fancyJoin(elements, joiner) {
-    let index = 1;
-    let array = [elements[0]];
-    while (index < elements.length) {
-      array.push(joiner);
-      array.push(elements[index]);
-      index++;
-    }
-    return array;
+  let index = 1;
+  let array = [elements[0]];
+  
+  while (index < elements.length) {
+    array.push(React.createElement(joiner, { key: `joiner-${index}` }));
+    array.push(elements[index]);
+    index++;
   }
   
+  return array;
+}
+
   export async function loadWords() {
     const content = await fetch('https://raw.githubusercontent.com/whoeverest/macedonian-words/master/MK-dict.txt')
       .then(res => res.text());

@@ -8,27 +8,25 @@ function WhiteSpan() {
   return <span className="join"> - </span>;
 }
 
-
 function Guesses() {
   const [state] = useGame();
   const { existingWords, error } = state;
 
   const content = existingWords.length > 0 ?
-    fancyJoin(existingWords, WhiteSpan()) : React.createElement('br', null);
+    fancyJoin(existingWords, WhiteSpan) : <br key="empty" />;
 
-  const errorString = error ? error : React.createElement('br', null);
-  const bannerClass = 'banner ' + (state.won ? 'winner' : 'loser');
-
-  return React.createElement(
-    'div',
-    null,
-    React.createElement('p', null, content),
-    React.createElement('p', { className: 'error' }, errorString),
-    React.createElement(
-      'div',
-      { className: bannerClass },
-      '🎉 Победивте! 🎉'
-    )
+  const errorString = error ? error : <br key="error-empty" />;
+  
+  return (
+    <div>
+      <p>{content}</p>
+      <p className="error">{errorString}</p>
+      {state.won && (
+        <div className="overlay">
+          <div className="banner">🎉 Победивте! 🎉</div>
+        </div>
+      )}
+    </div>
   );
 }
 
