@@ -24,7 +24,7 @@ export function fancyJoin(elements, joiner) {
     let dictionary = new Set();
     words.forEach(word => dictionary.add(word.trim().toUpperCase()));
     window.__dict = dictionary;
-  
+    console.log(dictionary);
     return dictionary;
   }
   
