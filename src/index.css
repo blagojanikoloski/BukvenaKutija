@@ -8,8 +8,9 @@
 }
 
 :root {
-  --background-color: #cccccc;
+  --background-color: #e2e2e2;
   --past-color: #adadad;
+  --text-color: #313131;
 }
 
 body {
@@ -75,7 +76,7 @@ circle {
 }
 
 circle.past {
-  fill: var(--background-color);
+  fill: var(--past-color);
 }
 
 circle.lead {
@@ -87,7 +88,7 @@ text {
   font-size: 60px;
   text-anchor: middle;
   font-family: Arial, Helvetica, sans-serif;
-  fill: white;
+  fill: var(--text-color);;
 }
 
 text.past,text.active {
@@ -108,6 +109,7 @@ input {
   text-align: center;
   padding: 0rem;
   border-bottom: 2px solid black;
+  color: var(--text-color);
 }
 
 button {
@@ -122,26 +124,39 @@ button {
   margin: 5px;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  flex-direction: column; /* Stack items vertically */
+}
+
 .banner {
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center; /* Center content vertically within the banner */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: font-size 0.5s;
   width: 100%; /* Optional: If you want the banner to stretch across the full width of the screen */
   text-align: center; /* Ensure the text within the banner is centered */
   font-size: 3rem;
-  transition-timing-function: ease-out;
+  color: #f5deb3;
+  margin: 0; /* Remove default margin to prevent overlap issues */
+}
+
+.new-combination {
+  font-size: 2rem;
+  margin: 10px 0; /* Add spacing between items */
+  text-align: center; /* Center the text within the new-combination */
   color: #f5deb3;
 }
 
-.new-combination{
-  font-size: 2rem;
-}
 
 .modal {
   display: flex;
@@ -182,19 +197,6 @@ button {
   margin-right: 10px;
 }
 
-/* Full-screen overlay */
-.overlay {
-  position: fixed; /* Sticks the overlay to the viewport */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center the banner within the overlay */
-  z-index: 999; /* Ensure it stays on top */
-}
 
 /* Apply this style only on mobile devices */
 @media (max-width: 1100px) {
