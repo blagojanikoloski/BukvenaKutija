@@ -99,6 +99,7 @@ text.active {
 }
 
 input {
+  pointer-events: none;
   background-color: var(--background-color);
   border: none;
   font-size: 60px;
@@ -178,10 +179,6 @@ button {
 
 /* Apply this style only on mobile devices */
 @media (max-width: 1100px) {
-
-  input {
-    pointer-events: none;
-  }
 
   .title-container {
     display:none;

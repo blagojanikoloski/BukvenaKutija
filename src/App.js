@@ -7,6 +7,8 @@ function App() {
   return React.createElement(
     GameProvider,
     null,
+    React.createElement('br'),
+    React.createElement('br'),
     React.createElement(
       'div',
       { className: 'title-container' },
