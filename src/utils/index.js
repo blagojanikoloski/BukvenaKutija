@@ -38,7 +38,7 @@ export function fancyJoin(elements, joiner) {
 
   async function fetchCombinations() {
     try {
-        const response = await fetch('https://raw.githubusercontent.com/blagojanikoloski/comb/main/combinations.json');
+        const response = await fetch('https://raw.githubusercontent.com/blagojanikoloski/ZborovnaKutija/master/src/utils/combinations.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
