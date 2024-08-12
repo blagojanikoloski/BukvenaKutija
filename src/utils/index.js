@@ -14,7 +14,7 @@ export function fancyJoin(elements, joiner) {
 }
 
   export async function loadWords() {
-    const content = await fetch('https://raw.githubusercontent.com/blagojanikoloski/ZborovnaKutija/master/src/utils/MK-dict.txt')
+    const content = await fetch('https://raw.githubusercontent.com/blagojanikoloski/povrzi/master/src/utils/MK-dict.txt')
       .then(res => res.text());
   
     const words = content
@@ -24,7 +24,6 @@ export function fancyJoin(elements, joiner) {
     let dictionary = new Set();
     words.forEach(word => dictionary.add(word.trim().toUpperCase()));
     window.__dict = dictionary;
-    console.log(dictionary);
     return dictionary;
   }
   
@@ -38,7 +37,7 @@ export function fancyJoin(elements, joiner) {
 
   async function fetchCombinations() {
     try {
-        const response = await fetch('https://raw.githubusercontent.com/blagojanikoloski/ZborovnaKutija/master/src/utils/combinations.json');
+        const response = await fetch('https://raw.githubusercontent.com/blagojanikoloski/povrzi/master/src/utils/combinations.json');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -51,12 +50,13 @@ export function fancyJoin(elements, joiner) {
 
   function getTodayCombination(data) {
       if (Array.isArray(data)) {
-          const today = new Date();
+          let today = new Date();
+          // Add 1 hour to match Macedonian time
+          today = new Date(today.getTime() + 1 * 60 * 60 * 1000);
           const startOfYear = new Date(today.getFullYear(), 0, 0);
           const diff = today - startOfYear;
           const oneDay = 1000 * 60 * 60 * 24;
           const dayOfYear = Math.floor(diff / oneDay);
-          console.log('Day of the year:', dayOfYear);
 
           if (dayOfYear < data.length) {
               const combination = data[dayOfYear];

@@ -9,8 +9,7 @@ function App() {
       <br />
       <br />
       <div className="title-container">
-        <img src="./logo.png" alt="Logo" className="logo" />
-        <h1>Зборовна Кутија</h1>
+        <img src="./povrzi-logo.png" alt="Logo" className="povrzilogo" />
       </div>
       <div className="row">
         <Box />
