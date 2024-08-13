@@ -193,7 +193,7 @@ export function fancyJoin(elements, joiner) {
       const today = new Date();
       
       // Add 1 hour to match Macedonian time
-      today.setHours(today.getHours() + 1);
+      // today.setHours(today.getHours() + 1);
 
       // Extract year, month, and day from the updated date
       const year = today.getFullYear();
