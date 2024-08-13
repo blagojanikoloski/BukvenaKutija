@@ -6,6 +6,7 @@ on:
       - master # Adjust this if your default branch is different
     paths-ignore:
       - 'src/utils/combinations.json'
+      - 'src/utils/MK-dict.txt'
 
 jobs:
   build:
