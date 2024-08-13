@@ -51,15 +51,11 @@ export function fancyJoin(elements, joiner) {
   function getTodayCombination(data) {
       if (Array.isArray(data)) {
           let today = new Date();
-          console.log("getTodayCombination "+ today);
           
-          // Add 1 hour to match Macedonian time
+          // Add 1 hour
           today = new Date(today.getTime() + 1 * 60 * 60 * 1000);
-          console.log("getTodayCombination after +1 "+ today);
 
           const startOfYear = new Date(today.getFullYear(), 0, 0);
-          console.log("startOfYear "+ today);
-
           const diff = today - startOfYear;
           const oneDay = 1000 * 60 * 60 * 24;
           const dayOfYear = Math.floor(diff / oneDay);
@@ -197,8 +193,6 @@ export function fancyJoin(elements, joiner) {
   function getFormattedDate() {
       // Get the current date and time
       const today = new Date();
-
-      console.log("getFormattedDate "+ today);
       
       // Add 1 hour to match Macedonian time
       // today.setHours(today.getHours() + 1);
