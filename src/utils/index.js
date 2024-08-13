@@ -58,6 +58,8 @@ export function fancyJoin(elements, joiner) {
           console.log("getTodayCombination after +1 "+ today);
 
           const startOfYear = new Date(today.getFullYear(), 0, 0);
+          console.log("startOfYear "+ today);
+
           const diff = today - startOfYear;
           const oneDay = 1000 * 60 * 60 * 24;
           const dayOfYear = Math.floor(diff / oneDay);
