@@ -138,13 +138,8 @@ export function fancyJoin(elements, joiner) {
       // Retrieve the last streak update date
       const lastUpdateDate = localStorage.getItem('last_streak_update');
   
-      // Get today's date in YYYY-MM-DD format
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-      const day = String(today.getDate()).padStart(2, '0');
-      const currentDateString = `${year}-${month}-${day}`;
-  
+      const currentDateString = getFormattedDate();
+
       // If there is a last update date, check if it's more than one day old
       if (lastUpdateDate) {
         const lastUpdate = new Date(lastUpdateDate);
@@ -159,11 +154,10 @@ export function fancyJoin(elements, joiner) {
           streak = 0;
           localStorage.setItem('user_streak', '0');
         }
-      } else {
-        
-      }
-  
+      } 
+
       return streak;
+
     } catch (e) {
       console.error('Error accessing streak from localStorage:', e);
       return 0;
@@ -174,12 +168,8 @@ export function fancyJoin(elements, joiner) {
   // Function to update the streak
   export const updateStreak = (increment = 1) => {
     try {
-      // Get the current date in YYYY-MM-DD format
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-      const day = String(today.getDate()).padStart(2, '0');
-      const dateString = `${year}-${month}-${day}`;
+
+      const dateString = getFormattedDate();
       
       // Get the last streak update date from localStorage, defaulting to null if not found
       const lastStreakUpdate = localStorage.getItem('last_streak_update') || null;
@@ -198,7 +188,24 @@ export function fancyJoin(elements, joiner) {
     }
   };
   
-  
+  function getFormattedDate() {
+      // Get the current date and time
+      const today = new Date();
+      
+      // Add 1 hour to match Macedonian time
+      today.setHours(today.getHours() + 1);
+
+      // Extract year, month, and day from the updated date
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+      const day = String(today.getDate()).padStart(2, '0');
+      
+      // Format the date as YYYY-MM-DD
+      const dateString = `${year}-${month}-${day}`;
+      
+      return dateString;
+  }
+
   
   // This is not an actual UUID, mostly to get around the React key warning
   export function uuid() {
