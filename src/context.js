@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { loadWords, letters } from './utils';
+import { loadWords, letters, getUserStreak } from './utils';
+import { getUserId } from './utils';
 
 const circleCoordinates = [
   [175, 100],
@@ -28,6 +29,10 @@ const baseGame = {
   __debug: false,
   loading: true
 };
+
+
+export const userId = getUserId();
+export const streak= getUserStreak();
 
 function generateMap(letterList) {
   const map = {};

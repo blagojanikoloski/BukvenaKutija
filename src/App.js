@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from './Input';
 import Box from './Box';
-import { GameProvider } from './context';
+import { GameProvider, streak } from './context';
 
 function App() {
   return (
@@ -10,6 +10,10 @@ function App() {
       <br />
       <div className="title-container">
         <img src="./povrzi-logo.png" alt="Logo" className="povrzilogo" />
+        <p className="streak">
+          Моментална<br /> низа: {streak}
+          {streak > 0 ? ' 🔥' : ''}
+        </p>
       </div>
       <div className="row">
         <Box />

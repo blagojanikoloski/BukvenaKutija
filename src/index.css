@@ -202,6 +202,10 @@ button {
   height: auto;
 }
 
+.streak{
+  font-size:20px;
+  margin-left: 20px;
+}
 
 /* Apply this style only on mobile devices */
 @media (max-width: 1100px) {

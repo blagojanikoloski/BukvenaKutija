@@ -89,9 +89,116 @@ export function fancyJoin(elements, joiner) {
       .split("").forEach(letter => letterSet.add(letter))
     );
     const winCondition = letterSet.size === 12;
-  
+
+    if(winCondition){
+      updateStreak();
+    }
     return winCondition;
   }
+
+  // Function to generate a UUID-like string
+  const generateUniqueId = () => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  };
+
+  // Function to get or create a unique user ID with a streak
+  export const getUserId = () => {
+    try {
+      let userId = localStorage.getItem('user_id');
+      let streak = localStorage.getItem('user_streak');
+
+      if (!userId) {
+        userId = generateUniqueId();
+        localStorage.setItem('user_id', userId);
+        localStorage.setItem('user_streak', '0'); // Initialize streak
+      }
+
+      return {
+        userId: userId,
+        streak: streak
+      };
+    } catch (e) {
+      console.error('Error accessing localStorage:', e);
+      // Fallback mechanism if necessary
+      return {
+        userId: generateUniqueId(),
+        streak: '0'
+      };
+    }
+  };
+
+  export const getUserStreak = () => {
+    try {
+      // Retrieve the current streak value
+      let streak = parseInt(localStorage.getItem('user_streak'), 10) || 0;
+  
+      // Retrieve the last streak update date
+      const lastUpdateDate = localStorage.getItem('last_streak_update');
+  
+      // Get today's date in YYYY-MM-DD format
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+      const day = String(today.getDate()).padStart(2, '0');
+      const currentDateString = `${year}-${month}-${day}`;
+  
+      // If there is a last update date, check if it's more than one day old
+      if (lastUpdateDate) {
+        const lastUpdate = new Date(lastUpdateDate);
+        const currentDate = new Date(currentDateString);
+  
+        // Strip time components to compare dates only
+        lastUpdate.setHours(0, 0, 0, 0);
+        currentDate.setHours(0, 0, 0, 0);
+  
+        // Reset streak if more than one calendar day has passed
+        if (currentDate - lastUpdate > 24 * 60 * 60 * 1000) {
+          streak = 0;
+          localStorage.setItem('user_streak', '0');
+        }
+      } else {
+        
+      }
+  
+      return streak;
+    } catch (e) {
+      console.error('Error accessing streak from localStorage:', e);
+      return 0;
+    }
+  };
+  
+
+  // Function to update the streak
+  export const updateStreak = (increment = 1) => {
+    try {
+      // Get the current date in YYYY-MM-DD format
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+      const day = String(today.getDate()).padStart(2, '0');
+      const dateString = `${year}-${month}-${day}`;
+      
+      // Get the last streak update date from localStorage, defaulting to null if not found
+      const lastStreakUpdate = localStorage.getItem('last_streak_update') || null;
+  
+      // Check if it's a new day or if the last update date doesn't exist
+      if (lastStreakUpdate !== dateString) {
+        let streak = parseInt(localStorage.getItem('user_streak') || '0', 10);
+        streak += increment;
+        localStorage.setItem('user_streak', streak.toString());
+  
+        // Update the last streak update date in localStorage
+        localStorage.setItem('last_streak_update', dateString);
+      }
+    } catch (e) {
+      console.error('Error updating streak:', e);
+    }
+  };
+  
+  
   
   // This is not an actual UUID, mostly to get around the React key warning
   export function uuid() {
