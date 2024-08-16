@@ -27,12 +27,12 @@ export function fancyJoin(elements, joiner) {
     return dictionary;
   }
   
-  function shuffle(array) {
-    return array.sort(() => Math.random() - 0.5);
-  }
-  // ЅЉЊЌЏ missing
-  const consonants = 'БВГДЃЖЗЈКЛМНПРСТФХЦЧЏШ';
-  const vowels = 'АЕИОУ';
+  // function shuffle(array) {
+  //   return array.sort(() => Math.random() - 0.5);
+  // }
+  // // ЅЉЊЌЏ missing
+  // const consonants = 'БВГДЃЖЗЈКЛМНПРСТФХЦЧЏШ';
+  // const vowels = 'АЕИОУ';
   
 
   async function fetchCombinations() {
@@ -101,10 +101,12 @@ export function fancyJoin(elements, joiner) {
   // Function to generate a UUID-like string
   const generateUniqueId = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : ((r & 0x3) | 0x8); // Added parentheses here
       return v.toString(16);
     });
   };
+  
 
   // Function to get or create a unique user ID with a streak
   export const getUserId = () => {

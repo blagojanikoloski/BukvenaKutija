@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import { loadWords, letters, getUserStreak } from './utils';
 import { getUserId } from './utils';
 
@@ -92,28 +92,29 @@ export function GameProvider({ children }) {
   const [state, set] = useState(baseGame);
   const { loading } = state;
 
-  function setState(change) {
+  const setState = useCallback((change) => {
     const error = checkForErrors(change, state);
     if (error) {
       set({ ...state, error });
     } else {
       set({ ...state, ...change, error: "" });
     }
-  }
-
-  const loadDictionary = async () => {
-    const dictionary = await loadWords();
-    setState({
-      dictionary,
-      loading: false
-    });
-  };
+  }, [state]);
 
   useEffect(() => {
+    // Define loadDictionary inside useEffect
+    const loadDictionary = async () => {
+      const dictionary = await loadWords();
+      setState({
+        dictionary,
+        loading: false
+      });
+    };
+
     if (loading) {
       loadDictionary();
     }
-  }, [loading]);
+  }, [loading, setState]);
 
   return !loading ? (
     <Game.Provider value={[state, setState]}>
