@@ -6,8 +6,6 @@ import { GameProvider, streak } from './context';
 function App() {
   return (
     <GameProvider>
-      <br />
-      <br />
       <div className="title-container">
         <img src="./povrzi-logo.png" alt="Logo" className="povrzilogo" />
         <p className="streak">
