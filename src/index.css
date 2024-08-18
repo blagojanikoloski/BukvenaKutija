@@ -46,7 +46,7 @@ span.join {
 
 .row {
   display: flex;
-  width: 100%;
+  width: 90%;
   text-align: center;
   max-height: 50svh;
   justify-content: center;
@@ -226,8 +226,7 @@ button {
   }
   
   .box-svg {
-    height: 40svh;
-    width: 40svh;
+
   }
 
   .new-combination{
