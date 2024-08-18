@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 320px;
   min-height: 100svh;
 }
 
@@ -16,7 +15,6 @@ body {
   background-color: var(--background-color);
   font-family: Arial, Helvetica, sans-serif;
   height: 100svh;
-  overflow: hidden;
 }
 
 .box-svg {
@@ -109,9 +107,8 @@ input {
   border: none;
   font-size: 60px;
   outline: none;
-  width: 100%;
+  width: 80%;
   text-align: center;
-  padding: 0rem;
   border-bottom: 2px solid black;
   color: var(--text-color);
 }
@@ -194,7 +191,7 @@ button {
   align-items: center;
   justify-content: center;
   margin-top: 35px;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 }
 
 .povrzilogo {
@@ -212,17 +209,27 @@ button {
 @media (max-width: 1100px) {
 
   .title-container {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
   
   .povrzilogo {
     width: 200px;
   }
 
+  .streak{
+    font-size:10px;
+    margin-left: 20px;
+  }
+
   .banner {
     font-size: 2rem;
   }
   
+  .box-svg {
+    height: 40svh;
+    width: 40svh;
+  }
+
   .new-combination{
     font-size: 1rem;
   }
