@@ -92,9 +92,6 @@ export function fancyJoin(elements, joiner) {
     );
     const winCondition = letterSet.size === 12;
 
-    if(winCondition){
-      updateStreak();
-    }
     return winCondition;
   }
 

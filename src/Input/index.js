@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGame } from '../context';
 import { fancyJoin, checkForWin } from '../utils';
 import Modal from '../utils/Modal';
 import { createPortal } from 'react-dom';
+import { updateStreak } from '../utils';
 
 function WhiteSpan() {
   return <span className="join"> - </span>;
@@ -17,6 +18,12 @@ function Guesses() {
 
   const errorString = error ? error : <br key="error-empty" />;
   
+  useEffect(() => {
+    if (state.won) {
+      updateStreak();
+    }
+  }, [state.won]);
+
   return (
     <div>
       <p>{content}</p>
@@ -34,7 +41,6 @@ function Guesses() {
 function Buttons({ keyDown }) {
   return (
     <div>
-      <button onClick={() => keyDown({ key: 'Escape' })}>Ново</button>
       <button onClick={() => keyDown({ key: 'Enter' })}>Потврди</button>
       <button onClick={() => keyDown({ key: '__delete' })}>Назад</button>
       <button onClick={() => keyDown({ key: '/' })}>Помош?</button>
@@ -82,12 +88,6 @@ function createKeyDown(state, setState) {
       }
     } else if (e.key === '/') {
       setState({ help: true });
-    } else if (e.key === 'Escape') {
-      setState({
-        currentGuess: '',
-        existingWords: [],
-        won: false
-      });
     } else if (e.key === '.') {
       setState({
         __debug: !__debug,
