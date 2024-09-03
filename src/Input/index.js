@@ -41,8 +41,8 @@ function Guesses() {
 function Buttons({ keyDown }) {
   return (
     <div>
-      <button onClick={() => keyDown({ key: 'Enter' })}>Потврди</button>
       <button onClick={() => keyDown({ key: '__delete' })}>Назад</button>
+      <button onClick={() => keyDown({ key: 'Enter' })}>Потврди</button>
       <button onClick={() => keyDown({ key: '/' })}>Помош?</button>
     </div>
   );
